@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CampusBuddies | Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="center">
+
+<div class="box">
+  <h2>CampusBuddies</h2>
+  <p style="margin-bottom:20px">One Campus, One Network</p>
+
+  <input id="loginId" type="text" placeholder="Student ID">
+  <input id="loginPass" type="password" placeholder="Password">
+
+  <button onclick="login()">Login</button>
+
+  <p style="margin-top:20px">
+    <a href="reset.html">Forgot password?</a><br>
+    <a href="register.html">Register new account</a>
+  </p>
+</div>
+
+<script>
+function login(){
+  const id = document.getElementById("loginId").value.trim();
+  const pass = document.getElementById("loginPass").value;
+
+  if(!id || !pass){
+    alert("Enter your Student ID and Password!");
+    return;
+  }
+
+  let users = JSON.parse(localStorage.getItem("users")) || [];
+  let user = users.find(u => u.studentId === id && u.password === pass);
+
+  if(user){
+    localStorage.setItem("currentUser", JSON.stringify(user));
+    window.location.href = "home.html";
+  } else {
+    alert("Invalid Student ID or Password!");
+  }
+}
+</script>
+</body>
+</html>

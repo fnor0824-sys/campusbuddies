@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CampusBuddies | Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-left">
+    <img src="logo.jpg" class="site-logo">
+    <b>CampusBuddies</b>
+  </div>
+  <div class="nav-center">
+    <span class="nav-item active" onclick="location.href='home.html'">Home</span>
+    <span class="nav-item" onclick="location.href='community.html'">Community</span>
+    <span class="nav-item" onclick="location.href='announcements.html'">Announcements</span>
+    <span class="nav-item" onclick="location.href='events.html'">Events</span>
+    <span class="nav-item" onclick="location.href='profile.html'">Profile</span>
+  </div>
+  <div class="nav-right">
+    <span id="date"></span> | <span id="time"></span>
+  </div>
+</nav>
+
+<!-- ===== HERO SECTION (ADDED) ===== -->
+<section class="hero">
+  <div class="hero-overlay"></div>
+
+  <div class="hero-content">
+    <img src="logo.jpg" class="hero-logo">
+
+    <h1>Welcome to CampusBuddies</h1>
+    <h2>One Campus. One Network.</h2>
+
+    <p>
+      A campus-based social networking platform designed exclusively for
+      UiTM Segamat students.
+    </p>
+  </div>
+</section>
+
+<!-- ===== ABOUT SECTION (ADDED) ===== -->
+<section class="about-home">
+  <h3>About CampusBuddies</h3>
+  <p>
+    CampusBuddies is a digital platform created to connect UiTM Segamat students
+    in one safe and trusted space. It helps students communicate, stay informed,
+    and build meaningful connections within the campus community.
+  </p>
+</section>
+
+<!-- ===== ORIGINAL FEED (KEKAL TAPI DISOROK DI HOME) ===== -->
+<div class="feed" style="display:none;">
+  <button onclick="showPostForm('home')">Add Post</button>
+
+  <div id="postFormhome" style="display:none;">
+    <input type="file" id="posterhome">
+    <input type="text" id="captionhome" placeholder="Write a caption">
+    <button onclick="postFeed('home')">Post</button>
+  </div>
+
+  <div id="feedhome"></div>
+</div>
+
+<script src="script.js"></script>
+<script>loadFeed('home');</script>
+</body>
+</html>

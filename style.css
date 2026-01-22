@@ -1,0 +1,394 @@
+/* ================= GLOBAL STYLES (ASAL) ================= */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(135deg, #6a5acd, #4f46e5, #ffffff);
+  min-height: 100vh;
+}
+/* ===== REGISTER BOX ===== */
+body.center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; /* penuh tinggi skrin */
+}
+
+.box {
+  background-color: white;
+  padding: 30px;
+  width: 350px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.box h3 {
+  margin-bottom: 20px;
+  color: #4f46e5;
+}
+
+.box input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.box button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  border-radius: 8px;
+  background-color: #4f46e5;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.box button:hover {
+  background-color: #3730a3;
+}
+
+.box a {
+  display: block;
+  margin-top: 12px;
+  color: #4f46e5;
+  text-decoration: none;
+}
+
+.box a:hover {
+  text-decoration: underline;
+}
+
+
+/* ================= NAVBAR (ASAL) ================= */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background: linear-gradient(90deg, #5b21b6, #2563eb);
+  color: white;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.site-logo {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+}
+
+.nav-center span {
+  margin: 0 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.nav-center span.active {
+  text-decoration: underline;
+}
+
+/* ================= COMMUNITY (ASAL) ================= */
+.community-container {
+  max-width: 700px;
+  margin: 30px auto;
+  background: white;
+  padding: 20px;
+  border-radius: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.community-container select {
+  width: 100%;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+  margin-bottom: 10px;
+}
+
+/* ================= CHAT BOX ================= */
+.chat-box {
+  height: 320px;
+  background: #ece5dd;
+  border-radius: 12px;
+  padding: 10px;
+  overflow-y: auto;
+}
+
+/* ================= WHATSAPP STYLE (TAMBAH) ================= */
+.chat-message {
+  max-width: 70%;
+  padding: 8px 12px;
+  margin: 6px 0;
+  border-radius: 14px;
+  font-size: 14px;
+  clear: both;
+}
+
+.chat-me {
+  background: #dcf8c6;
+  float: right;
+  border-bottom-right-radius: 4px;
+}
+
+.chat-other {
+  background: white;
+  float: left;
+  border-bottom-left-radius: 4px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.15);
+}
+
+.chat-message b {
+  font-size: 11px;
+  display: block;
+  margin-bottom: 3px;
+  color: #555;
+}
+
+/* ================= INPUT ================= */
+.chat-input-area {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+}
+
+.chat-input-area input {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #ccc;
+}
+
+.chat-input-area button {
+  background: #25d366;
+  border-radius: 50%;
+  border: none;
+  color: white;
+  font-size: 18px;
+  padding: 10px 14px;
+  cursor: pointer;
+}
+/* ===== POST MODAL ===== */
+.post-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.post-box {
+  background: white;
+  width: 320px;
+  padding: 20px;
+  border-radius: 18px;
+}
+
+.post-box input,
+.post-box textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+.post-box button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 20px;
+  background: #6366f1;
+  color: white;
+  border: none;
+}
+
+/* ===== FLOATING BUTTON ===== */
+.floating-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 32px;
+  background: #7c3aed;
+  color: white;
+  border: none;
+}
+/* ===== HOME HERO SECTION (ADDED ONLY) ===== */
+
+.hero {
+  position: relative;
+  height: 80vh;
+  background: url("uni.jpeg") center/cover no-repeat;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  color: white;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 20px;
+}
+
+.hero-logo {
+  width: 120px;
+  margin-bottom: 15px;
+}
+
+.about-home {
+  padding: 50px 20px;
+  text-align: center;
+  background: #f5f6ff;
+}
+/* ===== ANNOUNCEMENT FEED ===== */
+.ann-post {
+  background: white;
+  padding: 15px;
+  border-radius: 16px;
+  margin: 0 auto 18px auto; /* center horizontally */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  max-width: 600px; /* adjust ikut size yang sesuai */
+  width: 90%; /* responsive for smaller screens */
+}
+
+
+.ann-post img {
+  width: 100%;
+  border-radius: 12px;
+}
+
+.ann-actions {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.ann-comments {
+  margin-top: 8px;
+  font-size: 14px;
+}
+/* ================= PROFILE PAGE (TAMBAHAN) ================= */
+
+.profile-wrapper{
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.profile-box{
+  width: 320px;
+  padding: 20px;
+  text-align: center;
+}
+
+.profile-box input,
+.profile-box button{
+  width: 100%;
+  margin-top: 8px;
+}
+
+.circle{
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid white;
+}
+/* ================= EVENT FEED ================= */
+.event-post {
+  background: white;
+  padding: 15px;
+  border-radius: 16px;
+  margin: 0 auto 18px auto; /* center horizontally */
+  box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+  max-width: 600px;
+  width: 90%; /* responsive */
+  white-space: pre-wrap; /* preserve line breaks */
+}
+
+.event-post img {
+  width: 100%;
+  border-radius: 12px;
+  margin-top: 10px;
+}
+
+.event-actions {
+  display: flex;
+  gap: 20px;
+  margin-top: 10px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.event-time {
+  font-size: 14px;
+  color: #555;
+  margin-top: 5px;
+}
+
+.event-location {
+  font-size: 14px;
+  color: #333;
+  margin-top: 3px;
+}
+
+/* ===== EVENT MODAL ===== */
+#eventPostModal .post-box {
+  width: 320px;
+  padding: 20px;
+  border-radius: 18px;
+}
+
+#eventPostModal input,
+#eventPostModal textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 10px;
+}
+
+#eventPostModal button {
+  width: 100%;
+  padding: 12px;
+  border-radius: 20px;
+  background: #6366f1;
+  color: white;
+  border: none;
+}
+
+/* ===== FLOATING EVENT BUTTON ===== */
+.floating-btn-event {
+  position: fixed;
+  bottom: 100px; /* avoid overlap with other floating buttons */
+  right: 25px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  font-size: 32px;
+  background: #4f46e5;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+

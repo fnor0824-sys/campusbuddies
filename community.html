@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CampusBuddies | Community</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- NAVBAR (ASAL) -->
+<nav class="navbar">
+  <div class="nav-left">
+    <img src="logo.jpg" class="site-logo">
+    <b>CampusBuddies</b>
+  </div>
+
+  <div class="nav-center">
+    <span onclick="location.href='home.html'">Home</span>
+    <span class="active">Community</span>
+    <span onclick="location.href='announcements.html'">Announcements</span>
+    <span onclick="location.href='events.html'">Events</span>
+    <span onclick="location.href='profile.html'">Profile</span>
+  </div>
+
+  <div class="nav-right">
+    <span id="date"></span> | <span id="time"></span>
+  </div>
+</nav>
+
+<!-- COMMUNITY CHAT -->
+<div class="community-box community-container">
+
+  <h3>Community Chat (coursemate)</h3>
+
+  <select id="courseSelect">
+    <option value="JSI110">JSI 110</option>
+    <option value="BA111">BA 111</option>
+    <option value="BA117">BA 117</option>
+    <option value="AS117">AS 117</option>
+    <option value="CS230">CS 230</option>
+    <option value="CS110">CS 110</option>
+  </select>
+
+  <!-- CHAT AREA -->
+  <div id="chatBox" class="chat-box"></div>
+
+  <!-- INPUT -->
+  <div class="chat-input chat-input-area">
+    <input id="chatInput" placeholder="Type your message...">
+    <button type="button" onclick="sendCommunityMessage()">➤</button>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

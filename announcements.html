@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CampusBuddies | Announcements</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-left">
+    <img src="logo.jpg" class="site-logo">
+    <b>CampusBuddies</b>
+  </div>
+  <div class="nav-center">
+    <span class="nav-item" onclick="location.href='home.html'">Home</span>
+    <span class="nav-item" onclick="location.href='community.html'">Community</span>
+    <span class="nav-item active" onclick="location.href='announcements.html'">Announcements</span>
+    <span class="nav-item" onclick="location.href='events.html'">Events</span>
+    <span class="nav-item" onclick="location.href='profile.html'">Profile</span>
+  </div>
+  <div class="nav-right">
+    <span id="date"></span> | <span id="time"></span>
+  </div>
+</nav>
+
+<!-- ================= ANNOUNCEMENT FEED ================= -->
+<div class="feed">
+
+  <!-- ASAL (DIBIARKAN) -->
+
+  <div id="postFormann" style="display:none;">
+    <input type="file" id="posterann">
+    <input type="text" id="captionann" placeholder="Announcement details">
+    <button onclick="postFeed('ann')">Post</button>
+  </div>
+
+  <!-- FEED ANNOUNCEMENT -->
+  <div id="feedann"></div>
+</div>
+
+<!-- ================= FLOATING + BUTTON ================= -->
+<button class="floating-btn" onclick="toggleAnnPost()">+</button>
+
+<!-- ================= POST MODAL ================= -->
+<div id="annPostModal" class="post-modal">
+  <div class="post-box">
+    <h3>New Announcement</h3>
+    <input type="file" id="annImage">
+    <textarea id="annCaption" placeholder="Write announcement..."></textarea>
+    <button onclick="submitAnnPost()">Post</button>
+    <button onclick="toggleAnnPost()" style="margin-top:8px;background:#ccc;color:black;">
+      Cancel
+    </button>
+  </div>
+</div>
+
+<script src="script.js"></script>
+<script>
+  loadFeed('ann');
+</script>
+
+</body>
+</html>

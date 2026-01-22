@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CampusBuddies | Profile</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .circle{
+      border-radius:50%;
+      object-fit:cover;
+      border:3px solid #fff;
+    }
+
+    .profile-wrapper{
+      display:flex;
+      justify-content:center;
+      margin-top:40px;
+    }
+
+    .profile-box{
+      width:320px;
+      padding:20px;
+      text-align:center;
+    }
+
+    .profile-box input,
+    .profile-box button{
+      width:100%;
+      margin-top:8px;
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-left">
+    <img src="logo.jpg" class="site-logo">
+    <b>CampusBuddies</b>
+  </div>
+  <div class="nav-center">
+    <span class="nav-item" onclick="location.href='home.html'">Home</span>
+    <span class="nav-item" onclick="location.href='community.html'">Community</span>
+    <span class="nav-item" onclick="location.href='announcements.html'">Announcements</span>
+    <span class="nav-item" onclick="location.href='events.html'">Events</span>
+    <span class="nav-item active" onclick="location.href='profile.html'">Profile</span>
+  </div>
+  <div class="nav-right">
+    <span id="date"></span> | <span id="time"></span>
+  </div>
+</nav>
+
+<div class="profile-wrapper">
+  <div class="box profile-box" id="profileBox">
+
+    <!-- PROFILE INFO -->
+    <img src="" id="profilePic" class="circle" width="110" height="110">
+    <h3 id="pname"></h3>
+    <p id="pid"></p>
+    <p id="pemail"></p>
+
+    <hr style="margin:12px 0;">
+
+    <!-- EDIT PROFILE -->
+    <h4>Edit Profile</h4>
+    <input id="editName" placeholder="Full Name">
+    <input id="editStudentId" placeholder="Student ID">
+    <input id="editEmail" placeholder="Email">
+    <input id="editPassword" type="password" placeholder="Password">
+    <input type="file" id="editPhoto" accept="image/*">
+
+    <button onclick="saveProfile()">Save Changes</button>
+    <button onclick="cancelEdit()">Cancel</button>
+
+    <hr style="margin:12px 0;">
+
+    <button onclick="logout()">Log Out</button>
+
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+<script>
+function loadProfile(){
+  if(!currentUser) location.href="index.html";
+
+  document.getElementById("pname").innerText = currentUser.name || "";
+  document.getElementById("pid").innerText = currentUser.studentId || "";
+  document.getElementById("pemail").innerText = currentUser.email || "";
+
+  document.getElementById("profilePic").src = currentUser.photo || "default.png";
+
+  document.getElementById("editName").value = currentUser.name || "";
+  document.getElementById("editStudentId").value = currentUser.studentId || "";
+  document.getElementById("editEmail").value = currentUser.email || "";
+  document.getElementById("editPassword").value = currentUser.password || "";
+}
+
+loadProfile();
+
+function cancelEdit(){
+  loadProfile();
+}
+
+function saveProfile(){
+  let name=document.getElementById("editName").value.trim();
+  let studentId=document.getElementById("editStudentId").value.trim();
+  let email=document.getElementById("editEmail").value.trim();
+  let pass=document.getElementById("editPassword").value.trim();
+
+  if(!name||!studentId||!email||!pass){
+    alert("Please fill all fields");
+    return;
+  }
+
+  let photoInput = document.getElementById("editPhoto");
+
+  if(photoInput.files[0]){
+    readProfileImage(photoInput.files[0], function(photoData){
+      updateProfileWithPhoto(photoData, name, studentId, email, pass);
+      alert("Profile updated successfully!");
+      loadProfile();
+    });
+  }else{
+    updateProfileWithPhoto(currentUser.photo, name, studentId, email, pass);
+    alert("Profile updated successfully!");
+    loadProfile();
+  }
+}
+
+function logout(){
+  localStorage.removeItem("currentUser");
+  location.href="index.html";
+}
+</script>
+
+</body>
+</html>

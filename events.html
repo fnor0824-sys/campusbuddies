@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CampusBuddies | Events</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-left">
+    <img src="logo.jpg" class="site-logo">
+    <b>CampusBuddies</b>
+  </div>
+  <div class="nav-center">
+    <span class="nav-item" onclick="location.href='home.html'">Home</span>
+    <span class="nav-item" onclick="location.href='community.html'">Community</span>
+    <span class="nav-item" onclick="location.href='announcements.html'">Announcements</span>
+    <span class="nav-item active" onclick="location.href='events.html'">Events</span>
+    <span class="nav-item" onclick="location.href='profile.html'">Profile</span>
+  </div>
+  <div class="nav-right">
+    <span id="date"></span> | <span id="time"></span>
+  </div>
+</nav>
+
+<div class="feed">
+
+  <!-- FLOATING POST FORM (hidden by default) -->
+  <div id="postFormevent" style="display:none;">
+    <input type="file" id="posterevent">
+    <input type="text" id="captionevent" placeholder="Event details">
+    <button onclick="postFeed('event')">Post</button>
+  </div>
+
+  <!-- EVENT FEED -->
+  <div id="feedevent"></div>
+</div>
+
+<!-- FLOATING + BUTTON -->
+<button class="floating-btn" onclick="toggleEventPost()">+</button>
+
+<!-- EVENT POST MODAL -->
+<div id="eventPostModal" class="post-modal">
+  <div class="post-box">
+    <h3>New Event</h3>
+    <input type="file" id="eventImage">
+    <textarea id="eventCaption" placeholder="Write event details..."></textarea>
+    <button onclick="submitEventPost()">Post</button>
+    <button onclick="toggleEventPost()" style="margin-top:8px;background:#ccc;color:black;">
+      Cancel
+    </button>
+  </div>
+</div>
+
+<script>
+// Toggle Event Modal
+function toggleEventPost() {
+  const modal = document.getElementById('eventPostModal');
+  modal.style.display = modal.style.display === 'block' ? 'none' : 'block';
+}
+
+// Submit new Event Post
+function submitEventPost() {
+  const caption = document.getElementById('eventCaption').value;
+  const imageInput = document.getElementById('eventImage');
+  const feed = document.getElementById('feedevent');
+
+  if (!caption) {
+    alert("Please enter event details!");
+    return;
+  }
+
+  const post = document.createElement('div');
+  post.className = 'event-post';
+  post.innerHTML = `
+    ${imageInput.files[0] ? `<img src="${URL.createObjectURL(imageInput.files[0])}" class="post-img">` : ''}
+    <p>${caption.replace(/\n/g,'<br>')}</p>
+  `;
+
+  feed.prepend(post);
+
+  // Reset modal
+  document.getElementById('eventCaption').value = '';
+  imageInput.value = '';
+  toggleEventPost();
+}
+
+// Load existing events feed
+function loadFeed(type) {
+  if (type !== 'event') return;
+
+  const feed = document.getElementById('feedevent');
+
+  const exampleEvents = [
+    {
+      caption: `1. Club & Society Registration Day\n• Date: 15 March 2026\n• Time: 9.00 AM – 4.00 PM\n• Location: Student Centre, UiTM Segamat\nAn event for students to explore and register for various clubs and societies.`
+    },
+    {
+      caption: `2. Career Talk: Preparing for the Future\n• Date: 20 March 2026\n• Time: 10.00 AM – 12.00 PM\n• Location: Dewan Kuliah 1\nA career talk session to help students gain insights into career planning.`
+    },
+    {
+      caption: `3. Interfaculty Sports Day\n• Date: 25 March 2026\n• Time: 8.00 AM – 5.00 PM\n• Location: UiTM Segamat Sports Complex\nA sports event that encourages teamwork and healthy competition among faculties.`
+    }
+  ];
+
+  exampleEvents.forEach(ev => {
+    const post = document.createElement('div');
+    post.className = 'event-post';
+    post.innerHTML = `<p>${ev.caption.replace(/\n/g,'<br>')}</p>`;
+    feed.appendChild(post);
+  });
+}
+
+// Initialize feed
+loadFeed('event');
+</script>
+
+</body>
+</html>
